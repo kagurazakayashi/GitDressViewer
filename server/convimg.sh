@@ -20,27 +20,20 @@ do
         mkdir "$newdf"
         fileid=0
         cd "$olddf"
-        for nowimg in `ls -1 -t -A *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG 2>/dev/null | tr " " "\?"`
+        for nowimg in `ls -1 -t -A *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.webp *.WEBP 2>/dev/null | tr " " "\?"`
         do
             nowimg=`tr "\?" " " <<<$nowimg`
             oldimg="$olddf/$nowimg"
             fileid=`expr $fileid + 1`
             allimg=`expr $allimg + 1`
-            newimg="$newdf/$fileid.webp"
             echo "[$allimg]转换图像: $oldimg"
+            newimg="$newdf/$fileid-s.webp"
             echo "到: $newimg ...";
-            convert -resize "1024x1024>" "$oldimg" "$newimg"
-        done
-        for nowimg in `ls -1 -t -A *.webp *.WEBP 2>/dev/null | tr " " "\?"`
-        do
-            nowimg=`tr "\?" " " <<<$nowimg`
-            oldimg="$olddf/$nowimg"
-            fileid=`expr $fileid + 1`
-            allimg=`expr $allimg + 1`
-            newimg="$newdf/$fileid.webp"
-            echo "[$allimg]复制已转换图像: $oldimg"
+            convert -resize "128x128>" -quality 50 "$oldimg" "$newimg"
+            newimg="$newdf/$fileid-m.webp"
             echo "到: $newimg ...";
-            cp "$oldimg" "$newimg"
+            convert -resize "1024x1024>" -quality 90 "$oldimg" "$newimg"
+            identify -format "%[fx:w]x%[fx:h]," "$newimg" >> "info.txt"
         done
         for nowimg in `ls -1 -t -A *.md *.MD 2>/dev/null | tr " " "\?"`
         do
