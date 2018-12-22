@@ -20,6 +20,7 @@ do
         mkdir "$newdf"
         fileid=0
         cd "$olddf"
+        echo "[" >> "$newdf/info.json"
         for nowimg in `ls -1 -t -A *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.webp *.WEBP 2>/dev/null | tr " " "\?"`
         do
             nowimg=`tr "\?" " " <<<$nowimg`
@@ -28,12 +29,13 @@ do
             allimg=`expr $allimg + 1`
             echo "[$allimg]转换图像: $oldimg"
             newimg="$newdf/$fileid-s.webp"
-            echo "到: $newimg ...";
+            echo "到: $newimg ..."
             convert -resize "128x128>" -quality 50 "$oldimg" "$newimg"
+            identify -format "[%[fx:w],%[fx:h]," "$newimg" >> "$newdf/info.json"
             newimg="$newdf/$fileid-m.webp"
-            echo "到: $newimg ...";
+            echo "到: $newimg ..."
             convert -resize "1024x1024>" -quality 90 "$oldimg" "$newimg"
-            identify -format "%[fx:w]x%[fx:h]," "$newimg" >> "info.txt"
+            identify -format "%[fx:w],%[fx:h]]," "$newimg" >> "$newdf/info.json"
         done
         for nowimg in `ls -1 -t -A *.md *.MD 2>/dev/null | tr " " "\?"`
         do
@@ -45,6 +47,7 @@ do
             cp "$oldimg" "$newimg"
         done
         fileid=0
+        echo "]" >> "$newdf/info.json"
     else
         echo "复制文件: $olddf"
         echo "到: $newdf ...";
