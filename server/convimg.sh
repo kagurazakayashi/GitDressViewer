@@ -21,9 +21,15 @@ do
         fileid=0
         cd "$olddf"
         echo "[" >> "$newdf/info.json"
-        for nowimg in `ls -1 -t -A *.jpg *.JPG *.jpeg *.JPEG *.png *.PNG *.webp *.WEBP 2>/dev/null | tr " " "\?"`
+        for nowimg in `
+        find . -iname "*.jpg" 2>/dev/null | tr " " "\?" &&
+        find . -iname "*.jpeg" 2>/dev/null | tr " " "\?" &&
+        find . -iname "*.png" 2>/dev/null | tr " " "\?" &&
+        find . -iname "*.webp" 2>/dev/null | tr " " "\?" &&
+        find . -iname "*.bmp" 2>/dev/null | tr " " "\?"`
         do
             nowimg=`tr "\?" " " <<<$nowimg`
+            nowimg=${nowimg:2}
             oldimg="$olddf/$nowimg"
             fileid=`expr $fileid + 1`
             allimg=`expr $allimg + 1`
@@ -41,10 +47,10 @@ do
         do
             nowimg=`tr "\?" " " <<<$nowimg`
             oldimg="$olddf/$nowimg"
-            newimg="$newdf/$nowimg"
-            echo "复制自述文件: $oldimg"
+            newimg="$newdf/$nowimg.html"
+            echo "转换自述文件: $oldimg"
             echo "到: $newimg ...";
-            cp "$oldimg" "$newimg"
+            markdown2 "$oldimg" > "$newimg"
         done
         fileid=0
         echo "]" >> "$newdf/info.json"
