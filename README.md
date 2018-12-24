@@ -7,5 +7,6 @@
 ## 依赖项
 
 - imagemagick
-- markdown2
 - cwebp
+- pip install markdown2
+- npm i jquery

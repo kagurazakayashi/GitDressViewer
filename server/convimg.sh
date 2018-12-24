@@ -54,6 +54,11 @@ do
         done
         fileid=0
         echo "]" >> "$newdf/info.json"
+        if [ ! -f "$newdf/README.md.html" ];then
+            blankreadme="$newdf/README.md.html"
+            echo "创建空白自述文件: $blankreadme"
+            echo "" > $blankreadme
+        fi
     else
         echo "复制文件: $olddf"
         echo "到: $newdf ...";
