@@ -9,14 +9,17 @@ rm -rf "$albumdir"
 mkdir "$albumdir"
 allimg=0
 echo "列出相册..."
+albumlist="$albumdir/list.json"
+echo "[" > $albumlist
 cd "$repositorydir"
-for albumdf in `ls -1 -t -A 2>/dev/null`
+for albumdf in `ls -1 -t 2>/dev/null`
 do
     olddf="$repositorydir/$albumdf"
     newdf="$albumdir/$albumdf"
     if [ -d $repositorydir"/"$albumdf ]
     then
         echo "创建文件夹: $newdf ..."
+        echo "\"$albumdf\"," >> $albumlist
         mkdir "$newdf"
         fileid=0
         cd "$olddf"
@@ -43,7 +46,7 @@ do
             convert -resize "1024x1024>" -quality 90 "$oldimg" "$newimg"
             identify -format "%[fx:w],%[fx:h]]," "$newimg" >> "$newdf/info.json"
         done
-        for nowimg in `ls -1 -t -A *.md *.MD 2>/dev/null | tr " " "\?"`
+        for nowimg in `ls -1 -t *.md *.MD 2>/dev/null | tr " " "\?"`
         do
             nowimg=`tr "\?" " " <<<$nowimg`
             oldimg="$olddf/$nowimg"
@@ -65,3 +68,4 @@ do
         cp -f "$olddf" "$newdf"
     fi
 done
+echo "]" >> $albumlist
