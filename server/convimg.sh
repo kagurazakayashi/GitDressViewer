@@ -1,6 +1,6 @@
 #!/bin/bash
 repositorydir="/Volumes/0wew0-1T/dress/Dress"
-albumdir="/Volumes/0wew0-1T/dress/GitDressViewer/album"
+albumdir="/Volumes/0wew0-1T/dress/GitDressViewer/html/album"
 echo "【批量压缩相册】"
 echo "本地仓库路径: $repositorydir"
 echo "图片缓存路径: $albumdir"
@@ -68,4 +68,6 @@ do
         cp -f "$olddf" "$newdf"
     fi
 done
+echo "创建相册列表 $albumlist ..."
 echo "]" >> $albumlist
+echo "操作全部完成。"
