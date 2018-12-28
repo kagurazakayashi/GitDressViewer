@@ -10,3 +10,4 @@
 - cwebp
 - pip install markdown2
 - npm i jquery
+- npm i horwheel

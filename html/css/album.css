@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: #D2D7DB;
     text-shadow: 1px 1px 0px #fff;
     font-weight: lighter;
 }
@@ -13,9 +14,36 @@ body {
 }
 #pagebg0 {
     background: linear-gradient(to top right, #D2D7DB, #EDF2F5);
-    z-index: -2;
+    z-index: 1;
 }
 #pagebg1 {
     background: url(../img/txtbg.png) repeat;
-    z-index: -1;
+    z-index: 2;
+}
+#albumlist {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    z-index: 3;
+}
+.albumlistsub {
+    height: 100%;
+}
+#albumlistsub0 {
+    position: relative;
+    display: inline-block;
+    background-color: lightcoral;
+    width: 100%;
+}
+#albumlistsub1 {
+    position: relative;
+    display: inline-block;
+    left: 100%;
+    background-color: aquamarine;
+    width: auto;
+}
+.albumbox {
+    background-color: #FFF;
+    display: block;
+    position: absolute;
 }
