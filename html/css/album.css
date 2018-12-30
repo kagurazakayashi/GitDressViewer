@@ -4,6 +4,7 @@ body {
     background-color: #D2D7DB;
     /* text-shadow: 1px 1px 0px #fff;
     font-weight: lighter; */
+    user-select: none;
 }
 .pagebg {
     top: 0;
@@ -57,7 +58,141 @@ body {
     font-weight: bolder;
 }
 .albumbox {
-    background-color: #FFF;
     display: block;
     position: absolute;
+}
+.album {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 5px #999, -10px 0px 20px #999;
+    border-radius: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.coverbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 330px;
+}
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.albumleft {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 15px;
+    box-shadow: 1px 0px 5px lightgray;
+    z-index: 10;
+}
+.coverlayer1 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 200px solid rgba(91, 206, 250, 0.5);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 7;
+}
+.coverlayer2 {
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-bottom: 200px solid rgba(245, 169, 184, 0.5);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 8;
+}
+.coverlayer3 {
+    position: absolute;
+    top: -40px;
+    left: 60px;
+    width: 0;
+    height: 0;
+    border-bottom: 400px solid #FFF;
+    border-right: 200px solid transparent;
+    transform: rotate(90deg);
+    z-index: 6;
+}
+.coverlayer4 {
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    border-bottom: 200px solid #FFF;
+    border-left: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 8;
+}
+.coverimg {
+    position: absolute;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    height: 80%;
+    z-index: 4;
+    background-color: gray;
+}
+.covertitle {
+    z-index: 9;
+    text-align: center;
+    position: absolute;
+}
+.covertitle1 {
+    top: 90px;
+    left: 20px;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: lighter;
+}
+.covertitle2 {
+    top: 20px;
+    right: 40px;
+    text-align: left;
+}
+.covertitle2a {
+    font-size: 20px;
+    font-weight: lighter;
+}
+.covertitle2b {
+    font-size: 12px;
+}
+.cciconbox {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    z-index: 11;
+}
+.cciconbox span {
+    float: left;
+    margin-left: 5px;
+}
+.ccicon1 img {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+}
+.cciconb img {
+    width: 16px;
+    height: 16px;
+}
+.cctext {
+    position: relative;
+    font-size: 5px;
+    top: -5px;
 }
