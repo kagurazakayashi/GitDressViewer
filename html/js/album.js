@@ -56,4 +56,11 @@ function resize() {
             row++;
         }
     });
+
+    const coverbox = $(".coverbox");
+    const albumwidth = $(".album").width();
+    const coverboxwh = 330;
+    const coverscale = albumwidth / coverboxwh;
+    const coverpos = 0 - ((coverbox.width() - albumwidth) / 2);
+    coverbox.css({"transform":"scale("+coverscale+")","left":coverpos,"top":coverpos});
 }

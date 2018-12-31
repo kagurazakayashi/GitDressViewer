@@ -3,7 +3,7 @@ body {
     margin: 0;
     background-color: #D2D7DB;
     /* text-shadow: 1px 1px 0px #fff;
-    font-weight: lighter; */
+     */
     user-select: none;
 }
 .pagebg {
@@ -158,16 +158,16 @@ body {
     left: 20px;
     font-style: italic;
     font-size: 25px;
-    font-weight: lighter;
+    
 }
 .covertitle2 {
     top: 20px;
     right: 40px;
     text-align: left;
+    color: #888;
 }
 .covertitle2a {
     font-size: 20px;
-    font-weight: lighter;
 }
 .covertitle2b {
     font-size: 12px;
@@ -181,6 +181,7 @@ body {
 .cciconbox span {
     float: left;
     margin-left: 5px;
+    text-align: center;
 }
 .ccicon1 img {
     width: 25px;
@@ -193,6 +194,7 @@ body {
 }
 .cctext {
     position: relative;
-    font-size: 5px;
+    font-size: 15px;
     top: -5px;
+    color: #888;
 }
