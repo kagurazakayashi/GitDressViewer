@@ -1,10 +1,12 @@
 const albumlist = $("#albumlist");
+var albumhtml = null;
+var debug = false;
 $(document).ready(function() {
-    albumbox();
-    resize();
+    loaddata();
 });
 $(window).resize(function() {
     resize();
+    albumbox();
 });
 $(document).keydown(function(e)  {
     const key = e.which;
@@ -63,4 +65,51 @@ function resize() {
     const coverscale = albumwidth / coverboxwh;
     const coverpos = 0 - ((coverbox.width() - albumwidth) / 2);
     coverbox.css({"transform":"scale("+coverscale+")","left":coverpos,"top":coverpos});
+}
+function loaddata() {
+    $.ajax({
+        type: "get",
+        dataType: "text",
+        url: 'album/list.json',
+        success: function (data) {
+            $("#albumlistsub1").html(createlist(formatjson(data)));
+            albumbox();
+            resize();
+        },
+        error:function (err) {
+            console.log("取得数据失败：",err);
+        }
+    });
+}
+function formatjson(json) {
+    json = replaceall("\n","",json);
+    json = replaceall(",]","]",json);
+    return $.parseJSON(json);
+}
+function openalbum(albumid) {
+    console.log(albumid);
+}
+function replaceall(replaceThis, withThis, inThis) {
+    withThis = withThis.replace(/\$/g,"$$$$");
+    return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
+}
+function createlist(jsonarr) {
+    var allhtml = "";
+    const albumlistsub1 = $("#albumlistsub1");
+    if (albumhtml == null) {
+        albumhtml = albumlistsub1.html();
+        albumlistsub1.empty();
+    }
+    for (i in jsonarr)
+    {
+        var nowalbumname = jsonarr[i];
+        var newalbumhtml = albumhtml;
+        var albumcoverimg = "album/"+encodeURIComponent(nowalbumname)+"/1-s.webp";
+        if (debug) albumcoverimg = "img/default.gif";
+        newalbumhtml = replaceall("#albumid#",i,newalbumhtml);
+        newalbumhtml = replaceall("#albumname#",nowalbumname,newalbumhtml);
+        newalbumhtml = newalbumhtml.replace("#albumcoverimg#",albumcoverimg);
+        allhtml += newalbumhtml;
+    }
+    return allhtml;
 }

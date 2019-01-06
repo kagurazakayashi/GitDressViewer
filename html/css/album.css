@@ -146,7 +146,10 @@ body {
     width: 100%;
     height: 80%;
     z-index: 4;
-    background-color: gray;
+    background-color: lightgray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .covertitle {
     z-index: 9;
