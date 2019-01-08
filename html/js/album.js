@@ -1,14 +1,16 @@
 const albumlist = $("#albumlist");
 var albumhtml = null;
-var debug = false;
+var debug = true;
+var scroll = 0;
 $(document).ready(function() {
     loaddata();
+    gotopage();
 });
 $(window).resize(function() {
     resize();
     albumbox();
 });
-$(document).keydown(function(e)  {
+$(document).keydown(function(e) {
     const key = e.which;
     const left = albumlist.scrollLeft();
     const windowheight = $(window).width();
@@ -45,7 +47,9 @@ function albumbox(windowheight) {
 function resize() {
     const title = $("#title");
     const windowheight = $(window).height();
-    title.css("top",(windowheight*0.5-title.height()*0.5)+"px");
+    const top = (windowheight*0.5-title.height()*0.5)+"px";
+    title.stop();
+    title.animate({"top":top},500);
 
     const albumboxh = $("#albumlist").height() * 0.5;
     var line = 0;
@@ -81,13 +85,28 @@ function loaddata() {
         }
     });
 }
+function gotopage() {
+    var scroll = GetQueryString("scroll");
+    if (scroll != null && scroll != "null") {
+        albumlist.animate({scrollLeft:scroll},500);
+    }
+}
 function formatjson(json) {
     json = replaceall("\n","",json);
     json = replaceall(",]","]",json);
     return $.parseJSON(json);
 }
-function openalbum(albumid) {
-    console.log(albumid);
+function openalbum(albumid,name) {
+    $("#subtitle").text("L o a d i n g ...");
+    const album = $("#album_"+albumid);
+    const top = 0 - album.height();
+    const url = "index.html?id="+albumid+"&name="+encodeURIComponent(name)+"&scroll="+albumlist.scrollLeft();
+    album.animate({"top":top+"px"},500,function () {
+        albumlist.animate({scrollLeft:0},500,function () {
+            $("#albumlistsub1").remove();
+            window.location.replace(url);
+        });
+    });
 }
 function replaceall(replaceThis, withThis, inThis) {
     withThis = withThis.replace(/\$/g,"$$$$");
@@ -112,4 +131,10 @@ function createlist(jsonarr) {
         allhtml += newalbumhtml;
     }
     return allhtml;
+}
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null) return unescape(r[2]); return null;
 }

@@ -1,0 +1,48 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #D2D7DB;
+    /* text-shadow: 1px 1px 0px #fff;
+     */
+    user-select: none;
+}
+.pagebg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+#pagebg0 {
+    background: linear-gradient(to top right, #D2D7DB, #EDF2F5);
+    z-index: 1;
+}
+#pagebg1 {
+    background: url(../img/txtbg.png) repeat;
+    z-index: 2;
+}
+#albumlistsub0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 3;
+}
+#title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    font-size: 100px;
+    text-align: center;
+    color: #EDF2F5;
+    font-weight: bolder;
+    text-shadow:-1px 0 #333, 0 -1px #333, 1px 0 #fff, 0 1px #fff;
+}
+#subtitle {
+    font-size: 20px;
+    font-weight: bolder;
+}
