@@ -45,11 +45,7 @@ function albumbox(windowheight) {
     $(".albumbox").css({"width":albumboxh,"height":albumboxh});
 }
 function resize() {
-    const title = $("#title");
-    const windowheight = $(window).height();
-    const top = (windowheight*0.5-title.height()*0.5)+"px";
-    title.stop();
-    title.animate({"top":top},500);
+    resizetitle();
 
     const albumboxh = $("#albumlist").height() * 0.5;
     var line = 0;
@@ -62,7 +58,6 @@ function resize() {
             row++;
         }
     });
-
     const coverbox = $(".coverbox");
     const albumwidth = $(".album").width();
     const coverboxwh = 330;
@@ -91,11 +86,6 @@ function gotopage() {
         albumlist.animate({scrollLeft:scroll},500);
     }
 }
-function formatjson(json) {
-    json = replaceall("\n","",json);
-    json = replaceall(",]","]",json);
-    return $.parseJSON(json);
-}
 function openalbum(albumid,name) {
     $("#subtitle").text("L o a d i n g ...");
     const album = $("#album_"+albumid);
@@ -107,10 +97,6 @@ function openalbum(albumid,name) {
             window.location.replace(url);
         });
     });
-}
-function replaceall(replaceThis, withThis, inThis) {
-    withThis = withThis.replace(/\$/g,"$$$$");
-    return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
 }
 function createlist(jsonarr) {
     var allhtml = "";
@@ -131,10 +117,4 @@ function createlist(jsonarr) {
         allhtml += newalbumhtml;
     }
     return allhtml;
-}
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null) return unescape(r[2]); return null;
 }

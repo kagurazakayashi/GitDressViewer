@@ -1,4 +1,5 @@
 var name = null;
+var imgcount = 0;
 $(document).ready(function() {
     loaddata();
     resize();
@@ -15,18 +16,26 @@ function loaddata() {
         window.location.replace("album.html");
     } else {
         $("#subtitle").text(name);
+        $.ajax({
+            type: "get",
+            dataType: "text",
+            url: 'album/'+name+'/info.json',
+            success: function (data) {
+                loadpictures(formatjson(data));
+                // $("#albumlistsub1").html(createlist());
+                // albumbox();
+                // resize();
+            },
+            error:function (err) {
+                console.log("取得数据失败：",err);
+            }
+        });
     }
 }
-function resize() {
-    const title = $("#title");
-    const windowheight = $(window).height();
-    const top = (windowheight*0.5-title.height()*0.5)+"px";
-    title.stop();
-    title.animate({"top":top},500);
+function loadpictures(imgjson) {
+    imgcount = imgjson.length;
+    $("#albumboxlayerbox").animate({"left":0},1000);
 }
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null) return unescape(r[2]); return null;
+function resize() {
+    resizetitle();
 }

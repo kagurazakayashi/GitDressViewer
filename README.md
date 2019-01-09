@@ -2,7 +2,7 @@
 
 用来在网页中浏览 [Dress](https://github.com/komeiji-satori/Dress) 项目。
 
-- 咕咕咕，还没有填坑。
+- 咕咕咕，还没有填坑，大约春节填完。
 
 ## 依赖项
 
@@ -10,4 +10,3 @@
 - cwebp
 - pip install markdown2
 - npm i jquery
-- npm i horwheel

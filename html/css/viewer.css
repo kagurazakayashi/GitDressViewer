@@ -20,15 +20,7 @@ body {
 #pagebg1 {
     background: url(../img/txtbg.png) repeat;
     z-index: 2;
-}
-#albumlistsub0 {
-    position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 3;
 }
 #title {
     position: absolute;
@@ -45,4 +37,87 @@ body {
 #subtitle {
     font-size: 20px;
     font-weight: bolder;
+}
+#albumlistsub0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+#albumboxlayerbox {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+.albumboxlayer {
+    position: absolute;
+    left: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#albumboxlayer1 {
+    top: 10px;
+    right: 10px;
+    bottom: 60px;
+    background: #CCC;
+    background: linear-gradient(to top right, #FFF, #CCC);
+    box-shadow: 1px 1px 10px #555;
+    z-index: 5;
+}
+#albumboxlayer2 {
+    top: 13px;
+    right: 13px;
+    bottom: 63px;
+    border-style: dashed dashed dashed none;
+    border-width: 2px;
+    border-color: #333;
+    z-index: 6;
+}
+#albumboxlayer3 {
+    top: 20px;
+    right: 20px;
+    bottom: 70px;
+    background: #FFF;
+    background: linear-gradient(to bottom, #FFF, #DDD);
+    box-shadow: 1px 1px 5px #555;
+    z-index: 7;
+}
+.albumboxpage {
+    top: 20px;
+    right: 20px;
+    bottom: 70px;
+    background: #FFF;
+    background: linear-gradient(to bottom, #FFF, #DDD);
+    z-index: 8;
+}
+.btnbox {
+    position: absolute;
+    width: 34%;
+    height: 45px;
+    bottom: 0;
+    text-align: center;
+    cursor: pointer;
+}
+.btnbox img {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+.btnbox img:hover {
+    background-color: #CCC;
+}
+#btnbox1 {
+    left: 0;
+}
+#btnbox2 {
+    left: 33%;
+}
+#btnbox3 {
+    right: 0;
 }
