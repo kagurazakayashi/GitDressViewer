@@ -39,3 +39,21 @@ function loadpictures(imgjson) {
 function resize() {
     resizetitle();
 }
+function btnprev() {
+    
+}
+function btnnext() {
+    
+}
+function btnclose() {
+    const albumboxlayerbox = $("#albumboxlayerbox");
+    const albumboxlayerboxw = (0-albumboxlayerbox.width())+"px";
+    var url = "album.html";
+    scroll = GetQueryString("scroll");
+    if (scroll != null && scroll != "null") {
+        url = url + "?scroll=" + scroll;
+    }
+    albumboxlayerbox.animate({"left":albumboxlayerboxw},500,function() {
+        window.location.replace(url);
+    });
+}
