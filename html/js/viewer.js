@@ -33,8 +33,25 @@ function loaddata() {
     }
 }
 function loadpictures(imgjson) {
+    const albumboxlayerbox = $("#albumboxlayerbox");
+    albumboxlayerbox.animate({"left":0},1000);
+    const boxh = albumboxlayerbox.height();
+    const boxw = albumboxlayerbox.width();
     imgcount = imgjson.length;
-    $("#albumboxlayerbox").animate({"left":0},1000);
+    for (i in imgjson) {
+        const imgconnttxt = i+'/'+imgcount;
+        const nowimgsize = imgjson[i];
+        const ii = parseInt(i)+1;
+        const url = 'album/'+name+'/'+ii+'-m.webp';
+        var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /></div>';
+        albumboxlayerbox.append(imghtml);
+    }
+    $(".pageimage").each(function (i){
+        const imageview = $(this);
+        const imageviewtop = "calc(50% - " + imageview.height() + "px)";
+        imageview.css("top",imageviewtop);
+        
+     });
 }
 function resize() {
     resizetitle();
