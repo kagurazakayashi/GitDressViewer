@@ -5,6 +5,7 @@ $(document).ready(function() {
     resize();
 });
 $(window).resize(function() {
+    formatallimage();
 });
 $(document).keydown(function(e) {
 });
@@ -42,16 +43,27 @@ function loadpictures(imgjson) {
         const imgconnttxt = i+'/'+imgcount;
         const nowimgsize = imgjson[i];
         const ii = parseInt(i)+1;
-        const url = 'album/'+name+'/'+ii+'-m.webp';
+        var url = 'album/'+name+'/'+ii+'-m.webp';
+        if (debug) url = "img/default.gif";
         var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /></div>';
         albumboxlayerbox.append(imghtml);
     }
+}
+function formatallimage() {
     $(".pageimage").each(function (i){
-        const imageview = $(this);
-        const imageviewtop = "calc(50% - " + imageview.height() + "px)";
-        imageview.css("top",imageviewtop);
-        
-     });
+        formatimage(this);
+    });
+}
+function formatimage(imagevobj) {
+    const imageo = $(imagevobj);
+    const imagev = $("#albumboxpage0");
+    const imagevh = imagev.height();
+    const imageoh = imageo.height();
+    const imagevw = imagev.width();
+    const imageow = imageo.width();
+    const imagevtop = (imagevh * 0.5 - imageoh * 0.5) + "px";
+    const imagevleft = (imagevw * 0.5 - imageow * 0.5) + "px";
+    imageo.css({"top":imagevtop,"left":imagevleft});
 }
 function resize() {
     resizetitle();

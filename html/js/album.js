@@ -1,6 +1,5 @@
 const albumlist = $("#albumlist");
 var albumhtml = null;
-var debug = true;
 var scroll = 0;
 $(document).ready(function() {
     loaddata();
