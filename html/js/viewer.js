@@ -1,5 +1,6 @@
 var name = null;
 var imgcount = 0;
+var isreadme = false;
 $(document).ready(function() {
     loaddata();
     resize();
@@ -17,6 +18,24 @@ function loaddata() {
         window.location.replace("album.html");
     } else {
         $("#subtitle").text(name);
+        $.ajax({
+            type: "get",
+            dataType: "text",
+            url: 'album/'+name+'/README.md.html',
+            success: function (data) {
+                if (data && data.length > 1) {
+                    $("#readme").html(data+"<p>&emsp;</p>");
+                    $("#readme a").attr("target","_blank");
+                    isreadme = true;
+                }
+                // $("#albumlistsub1").html(createlist());
+                // albumbox();
+                // resize();
+            },
+            error:function (err) {
+                console.log("取得数据失败：",err);
+            }
+        });
         $.ajax({
             type: "get",
             dataType: "text",

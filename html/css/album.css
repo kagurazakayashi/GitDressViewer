@@ -94,48 +94,38 @@ body {
     box-shadow: 1px 0px 5px lightgray;
     z-index: 10;
 }
-.coverlayer1 {
+.coverlayer {
     position: absolute;
     width: 0;
     height: 0;
+    transform: rotate(90deg);
+}
+.coverlayer1 {
     border-bottom: 200px solid rgba(91, 206, 250, 0.5);
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
-    transform: rotate(90deg);
     z-index: 7;
 }
 .coverlayer2 {
-    position: absolute;
     top: 50px;
     left: 30px;
-    width: 0;
-    height: 0;
     border-bottom: 200px solid rgba(245, 169, 184, 0.5);
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
-    transform: rotate(90deg);
     z-index: 8;
 }
 .coverlayer3 {
-    position: absolute;
     top: -40px;
     left: 60px;
-    width: 0;
-    height: 0;
     border-bottom: 400px solid #FFF;
     border-right: 200px solid transparent;
-    transform: rotate(90deg);
     z-index: 6;
 }
 .coverlayer4 {
-    position: absolute;
     top: 180px;
     left: 50px;
-    width: 0;
-    height: 0;
     border-bottom: 200px solid #FFF;
     border-left: 100px solid transparent;
-    transform: rotate(90deg);
     z-index: 8;
 }
 .coverimg {

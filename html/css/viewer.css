@@ -94,6 +94,7 @@ body {
     background: #FFF;
     background: linear-gradient(to bottom, #FFF, #DDD);
     text-align: center;
+    overflow: hidden;
     z-index: 8;
 }
 .btnbox {
@@ -128,4 +129,72 @@ body {
     max-height: 100%;
     top: 0;
     left: 0;
+}
+#albumboxpager {
+    z-index: 10;
+}
+.coverlayer {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+#coverlayer1 {
+    border-bottom: 200px solid rgba(91, 206, 250, 0.5);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 11;
+}
+#coverlayer2 {
+    top: 50px;
+    left: 30px;
+    border-bottom: 200px solid rgba(245, 169, 184, 0.5);
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 12;
+}
+#coverlayer3 {
+    z-index: 13;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#readmetitle {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 0px;
+    height: auto;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px #888;
+}
+#txtread {
+    color: rgba(91, 206, 250, 1);
+}
+#txtme {
+    font-size: 50px;
+    color: rgba(245, 169, 184, 1);
+}
+#txtmd {
+    color: rgba(91, 206, 250, 1);
+}
+#readmetitle hr{
+    height:1px;
+    border:none;
+    border-top:2px dashed rgba(91, 206, 250, 1);
+    border-bottom:2px solid rgba(245, 169, 184, 1);
+}
+#readme {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    right: 50px;
+    bottom: 0;
+    color: #555;
+}
+#readme img {
+    max-width: 100%;
 }
