@@ -1,43 +1,3 @@
-body {
-    padding: 0;
-    margin: 0;
-    background-color: #D2D7DB;
-    /* text-shadow: 1px 1px 0px #fff;
-     */
-    user-select: none;
-}
-.pagebg {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-}
-#pagebg0 {
-    background: linear-gradient(to top right, #D2D7DB, #EDF2F5);
-    z-index: 1;
-}
-#pagebg1 {
-    background: url(../img/txtbg.png) repeat;
-    z-index: 2;
-    left: 0;
-}
-#title {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: auto;
-    font-size: 100px;
-    text-align: center;
-    color: #EDF2F5;
-    font-weight: bolder;
-    text-shadow:-1px 0 #333, 0 -1px #333, 1px 0 #fff, 0 1px #fff;
-}
-#subtitle {
-    font-size: 20px;
-    font-weight: bolder;
-}
 #albumlistsub0 {
     position: absolute;
     top: 0;
@@ -172,20 +132,20 @@ body {
     text-shadow: 1px 1px 1px #888;
 }
 #txtread {
-    color: rgba(91, 206, 250, 1);
+    color: #5bcefa;
 }
 #txtme {
     font-size: 50px;
-    color: rgba(245, 169, 184, 1);
+    color: #f5a9b8;
 }
 #txtmd {
-    color: rgba(91, 206, 250, 1);
+    color: #5bcefa;
 }
 #readmetitle hr{
     height:1px;
     border:none;
-    border-top:2px dashed rgba(91, 206, 250, 1);
-    border-bottom:2px solid rgba(245, 169, 184, 1);
+    border-top:2px dashed #5bcefa;
+    border-bottom:2px solid #f5a9b8;
 }
 #readme {
     position: absolute;

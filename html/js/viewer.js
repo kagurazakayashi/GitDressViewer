@@ -28,9 +28,6 @@ function loaddata() {
                     $("#readme a").attr("target","_blank");
                     isreadme = true;
                 }
-                // $("#albumlistsub1").html(createlist());
-                // albumbox();
-                // resize();
             },
             error:function (err) {
                 console.log("取得数据失败：",err);
