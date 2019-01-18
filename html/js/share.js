@@ -1,4 +1,4 @@
-var debug = true;
+var debug = false;
 function resizetitle() {
     const title = $("#title");
     const windowheight = $(window).height();
