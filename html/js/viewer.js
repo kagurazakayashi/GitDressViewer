@@ -1,6 +1,7 @@
 var name = null;
-var imgcount = 0;
 var isreadme = false;
+var nowpage = 1;
+var allpage = 0;
 $(document).ready(function() {
     loaddata();
     resize();
@@ -54,12 +55,12 @@ function loadpictures(imgjson) {
     albumboxlayerbox.animate({"left":0},1000);
     const boxh = albumboxlayerbox.height();
     const boxw = albumboxlayerbox.width();
-    imgcount = imgjson.length;
+    allpage = imgjson.length;
     for (i in imgjson) {
-        const imgconnttxt = i+'/'+imgcount;
         const nowimgsize = imgjson[i];
-        const ii = parseInt(i)+1;
-        var url = 'album/'+name+'/'+ii+'-m.webp';
+        const ii = allpage - parseInt(i) + 1;
+        const imgconnttxt = ii+'/'+allpage;
+        var url = 'album/'+name+'/'+(ii-1)+'-m.webp';
         if (debug) url = "img/default.gif";
         var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /></div>';
         albumboxlayerbox.append(imghtml);
@@ -85,10 +86,20 @@ function resize() {
     resizetitle();
 }
 function btnprev() {
-    
+    if (nowpage > 1) {
+        const nowpageobj = $("#albumboxpage"+(nowpage-1));
+        nowpageobj.css("display","block");
+        nowpage--;
+        const pagestr = nowpage + "/" + (allpage + 1);
+    }
 }
 function btnnext() {
-    
+    if (nowpage <= allpage) {
+        const nowpageobj = $("#albumboxpage"+nowpage);
+        nowpageobj.css("display","none");
+        nowpage++;
+        const pagestr = nowpage + "/" + (allpage + 1);
+    }
 }
 function btnclose() {
     const albumboxlayerbox = $("#albumboxlayerbox");
