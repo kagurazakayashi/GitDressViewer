@@ -163,6 +163,7 @@
     display: none;
     z-index: 1001;
     background: transparent;
-    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0), rgba(0,0,0,0.5));
     pointer-events: none;
+    box-shadow: 50px 50px 100px #000;
 }

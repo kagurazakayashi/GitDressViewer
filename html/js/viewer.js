@@ -2,6 +2,7 @@ var name = null;
 var isreadme = false;
 var nowpage = 1;
 var allpage = 0;
+var scling = false;
 $(document).ready(function() {
     loaddata();
     resize();
@@ -40,9 +41,6 @@ function loaddata() {
             url: 'album/'+name+'/info.json',
             success: function (data) {
                 loadpictures(formatjson(data));
-                // $("#albumlistsub1").html(createlist());
-                // albumbox();
-                // resize();
             },
             error:function (err) {
                 console.log("取得数据失败：",err);
@@ -52,12 +50,11 @@ function loaddata() {
 }
 function loadpictures(imgjson) {
     const albumboxlayerbox = $("#albumboxlayerbox");
-    albumboxlayerbox.animate({"left":0},1000);
-    const boxh = albumboxlayerbox.height();
-    const boxw = albumboxlayerbox.width();
+    albumboxlayerbox.animate({"left":0},1000,function(){
+        if (!isreadme) btnnext();
+    });
     allpage = imgjson.length;
     for (i in imgjson) {
-        const nowimgsize = imgjson[i];
         const ii = allpage - parseInt(i) + 1;
         const imgconnttxt = ii+'/'+allpage;
         var url = 'album/'+name+'/'+(ii-1)+'-m.webp';
@@ -86,22 +83,42 @@ function resize() {
     resizetitle();
 }
 function btnprev() {
-    if (nowpage > 1) {
+    if (nowpage > 1 && !scling) {
+        scling = true;
         const nowpageobj = $("#albumboxpage"+(nowpage-1));
+        const pagectlshadow = $("#pagectlshadow");
         nowpageobj.css("display","block");
+        nowpageobj.animate({"left":0,"right":"20px"},500,function() {
+        });
+        pagectlshadow.css({"display":"block","right":"100%","opacity":1});
+        pagectlshadow.animate({"left":0,"right":"20px","opacity":0},500,function() {
+            pagectlshadow.css("display","none");
+            scling = false;
+        });
         nowpage--;
         const pagestr = nowpage + "/" + (allpage + 1);
     }
 }
 function btnnext() {
-    if (nowpage <= allpage) {
+    if (nowpage <= allpage && !scling) {
+        scling = true;
         const nowpageobj = $("#albumboxpage"+nowpage);
-        nowpageobj.css("display","none");
+        const pagectlshadow = $("#pagectlshadow");
+        nowpageobj.animate({"left":"-100%","right":"100%"},500,function() {
+            nowpageobj.css("display","none");
+        });
+        pagectlshadow.css({"display":"block","right":"20px","opacity":0});
+        pagectlshadow.animate({"left":0,"right":"100%","opacity":1},500,function() {
+            pagectlshadow.css("display","none");
+            scling = false;
+        });
         nowpage++;
         const pagestr = nowpage + "/" + (allpage + 1);
     }
 }
 function btnclose() {
+    if (scling) return;
+    scling = true;
     const albumboxlayerbox = $("#albumboxlayerbox");
     const albumboxlayerboxw = (0-albumboxlayerbox.width())+"px";
     var url = "album.html";
