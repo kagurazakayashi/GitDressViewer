@@ -11,6 +11,12 @@ $(window).resize(function() {
     formatallimage();
 });
 $(document).keydown(function(e) {
+    const key = e.which;
+    if (key == 34 || key == 32 || key == 68 || key == 83 || key == 40 || key == 39) {
+        btnnext();
+    } else if (key == 33 || key == 87 || key == 65 || key == 37 || key == 38) {
+        btnprev();
+    }
 });
 $(document).on("mousewheel DOMMouseScroll", function (e) {
 });
@@ -59,9 +65,35 @@ function loadpictures(imgjson) {
         const imgconnttxt = ii+'/'+allpage;
         var url = 'album/'+name+'/'+(ii-1)+'-m.webp';
         if (debug) url = "img/default.gif";
-        var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /></div>';
+        var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer touchdiv"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /><div class="pagenum">'+ii+' / '+(allpage+1)+'</div></div>';
         albumboxlayerbox.append(imghtml);
     }
+    $(".touchdiv").on("touchstart", function(e) {
+        if (e.cancelable) {
+            if (!e.defaultPrevented) {
+                e.preventDefault();
+            }
+        }   
+        startX = e.originalEvent.changedTouches[0].pageX,
+        startY = e.originalEvent.changedTouches[0].pageY;
+    });
+    $(".touchdiv").on("touchend", function(e) {
+        if (e.cancelable) {
+            if (!e.defaultPrevented) {
+                e.preventDefault();
+            }
+        }
+        moveEndX = e.originalEvent.changedTouches[0].pageX,
+        moveEndY = e.originalEvent.changedTouches[0].pageY,
+        X = moveEndX - startX,
+        Y = moveEndY - startY;
+        if ( X > 0 ) {
+            btnprev();         
+        }
+        else if ( X < 0 ) {
+            btnnext();
+        }
+    });
 }
 function formatallimage() {
     $(".pageimage").each(function (i){
