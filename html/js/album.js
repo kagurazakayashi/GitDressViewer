@@ -2,6 +2,9 @@ const albumlist = $("#albumlist");
 var albumhtml = null;
 var scroll = 0;
 $(document).ready(function() {
+    const albumlistsub1 = $("#albumlistsub1");
+    albumhtml = albumlistsub1.html();
+    albumlistsub1.empty();
     loaddata();
     gotopage();
 });
@@ -75,7 +78,7 @@ function loaddata() {
             resize();
         },
         error:function (err) {
-            console.log("取得数据失败：",err);
+            loadfail("错误：获取相册列表没有成功。");
         }
     });
 }
@@ -100,10 +103,6 @@ function openalbum(albumid,name) {
 function createlist(jsonarr) {
     var allhtml = "";
     const albumlistsub1 = $("#albumlistsub1");
-    if (albumhtml == null) {
-        albumhtml = albumlistsub1.html();
-        albumlistsub1.empty();
-    }
     for (i in jsonarr)
     {
         var nowalbumname = jsonarr[i];

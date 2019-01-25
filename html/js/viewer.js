@@ -38,7 +38,7 @@ function loaddata() {
                 }
             },
             error:function (err) {
-                console.log("取得数据失败：",err);
+                loadfail("错误：获取自述文件没有成功。");
             }
         });
         $.ajax({
@@ -49,7 +49,7 @@ function loaddata() {
                 loadpictures(formatjson(data));
             },
             error:function (err) {
-                console.log("取得数据失败：",err);
+                loadfail("错误：获取相册数据没有成功。");
             }
         });
     }

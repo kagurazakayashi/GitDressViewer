@@ -1,4 +1,7 @@
 var debug = false;
+function loadfail(errinfo) {
+    $("body").append('<div class="error">'+errinfo+'<div>网页已停止运行，请后退或刷新后再试。</div></div>');
+}
 function resizetitle() {
     const title = $("#title");
     const windowheight = $(window).height();
