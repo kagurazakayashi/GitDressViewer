@@ -102,7 +102,7 @@ function openalbum(albumid,name) {
 }
 function createlist(jsonarr) {
     var allhtml = "";
-    const albumlistsub1 = $("#albumlistsub1");
+    total = jsonarr.length;
     for (i in jsonarr)
     {
         var nowalbumname = jsonarr[i];

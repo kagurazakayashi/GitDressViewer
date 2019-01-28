@@ -1,7 +1,7 @@
 var name = null;
 var isreadme = false;
 var nowpage = 1;
-var allpage = 0;
+var total = 0;
 var scling = false;
 $(document).ready(function() {
     loaddata();
@@ -59,13 +59,13 @@ function loadpictures(imgjson) {
     albumboxlayerbox.animate({"left":0},1000,function(){
         if (!isreadme) btnnext();
     });
-    allpage = imgjson.length;
+    total = imgjson.length;
     for (i in imgjson) {
-        const ii = allpage - parseInt(i) + 1;
-        const imgconnttxt = ii+'/'+allpage;
+        const ii = total - parseInt(i) + 1;
+        const imgconnttxt = ii+'/'+total;
         var url = 'album/'+name+'/'+(ii-1)+'-m.webp';
         if (debug) url = "img/default.gif";
-        var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer touchdiv"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);" /><div class="pagenum">'+ii+' / '+(allpage+1)+'</div></div>';
+        var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer touchdiv"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);setprogress();" /><div class="pagenum">'+ii+' / '+(total+1)+'</div></div>';
         albumboxlayerbox.append(imghtml);
     }
     $(".touchdiv").on("touchstart", function(e) {
@@ -128,11 +128,11 @@ function btnprev() {
             scling = false;
         });
         nowpage--;
-        const pagestr = nowpage + "/" + (allpage + 1);
+        const pagestr = nowpage + "/" + (total + 1);
     }
 }
 function btnnext() {
-    if (nowpage <= allpage && !scling) {
+    if (nowpage <= total && !scling) {
         scling = true;
         const nowpageobj = $("#albumboxpage"+nowpage);
         const pagectlshadow = $("#pagectlshadow");
@@ -145,7 +145,7 @@ function btnnext() {
             scling = false;
         });
         nowpage++;
-        const pagestr = nowpage + "/" + (allpage + 1);
+        const pagestr = nowpage + "/" + (total + 1);
     }
 }
 function btnclose() {

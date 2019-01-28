@@ -18,6 +18,7 @@
 <body>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="js/share.js"></script>
+    <div id="progressf"></div>
     <div id="pagebg0" class="pagebg"></div>
     <div id="pagebg1" class="pagebg"></div>
     <div id="albumlist" class="pagebg">
@@ -37,7 +38,7 @@
                             <div class="coverlayer coverlayer2"></div>
                             <div class="coverlayer coverlayer3"></div>
                             <div class="coverlayer coverlayer4"></div>
-                            <div class="coverimg" style="background-image:url('#albumcoverimg#');"></div>
+                            <div class="coverimg" style="background-image:url('#albumcoverimg#');" onload="setprogress();"></div>
                             <div class="covertitle1 covertitle">#albumname#</div>
                             <div class="covertitle2 covertitle">
                                 <div class="covertitle2a">Dress</div>

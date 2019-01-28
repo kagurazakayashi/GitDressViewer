@@ -1,6 +1,19 @@
 var debug = false;
+var loaded = 0;
+var total = 0;
 function loadfail(errinfo) {
     $("body").append('<div class="error">'+errinfo+'<div>网页已停止运行，请后退或刷新后再试。</div></div>');
+}
+function setprogress() {
+    loaded++;
+    var percentage = loaded / total * 100;
+    // console.log(loaded,total,percentage);
+    if (percentage >= 100) {
+        percentage = 100;
+        $("#progressf").hide();
+    } else {
+        $("#progressf").css("width",percentage+"%");
+    }
 }
 function resizetitle() {
     const title = $("#title");
