@@ -33,6 +33,28 @@
     overflow: hidden;
     cursor: pointer;
 }
+#toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 10;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+#toolbar a {
+    text-decoration: none;
+}
+#toolbar img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.5;
+}
+#toolbar img:hover {
+    opacity: 1;
+}
 .coverbox {
     position: absolute;
     top: 0;

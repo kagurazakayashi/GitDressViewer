@@ -1,6 +1,7 @@
 var debug = false;
 var loaded = 0;
 var total = 0;
+var imgformat = "jpg";
 function loadfail(errinfo) {
     $("body").append('<div class="error">'+errinfo+'<div>网页已停止运行，请后退或刷新后再试。</div></div>');
 }
@@ -37,3 +38,11 @@ function replaceall(replaceThis, withThis, inThis) {
     withThis = withThis.replace(/\$/g,"$$$$");
     return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
 }
+function checkWebp() {
+    try {
+        return (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0);
+    } catch(err) {
+        return  false;
+    }
+}
+if (checkWebp()) imgformat = "webp";

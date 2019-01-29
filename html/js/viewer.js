@@ -63,7 +63,7 @@ function loadpictures(imgjson) {
     for (i in imgjson) {
         const ii = total - parseInt(i) + 1;
         const imgconnttxt = ii+'/'+total;
-        var url = 'album/'+name+'/'+(ii-1)+'-m.webp';
+        var url = 'album/'+name+'/'+(ii-1)+'-m.'+imgformat;
         if (debug) url = "img/default.gif";
         var imghtml = '<div id="albumboxpage'+ii+'" class="albumboxpage albumboxlayer touchdiv"><img class="pageimage" src="'+url+'" alt="'+imgconnttxt+'" onload="formatimage(this);setprogress();" /><div class="pagenum">'+ii+' / '+(total+1)+'</div></div>';
         albumboxlayerbox.append(imghtml);

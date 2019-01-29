@@ -68,6 +68,7 @@ function resize() {
     coverbox.css({"transform":"scale("+coverscale+")","left":coverpos,"top":coverpos});
 }
 function loaddata() {
+    $("#lastupdate").load("album/finishtime.txt");
     $.ajax({
         type: "get",
         dataType: "text",
@@ -107,7 +108,7 @@ function createlist(jsonarr) {
     {
         var nowalbumname = jsonarr[i];
         var newalbumhtml = albumhtml;
-        var albumcoverimg = "album/"+encodeURIComponent(nowalbumname)+"/1-s.webp";
+        var albumcoverimg = "album/"+encodeURIComponent(nowalbumname)+"/1-s."+imgformat;
         if (debug) albumcoverimg = "img/default.gif";
         newalbumhtml = replaceall("#albumid#",i,newalbumhtml);
         newalbumhtml = replaceall("#albumname#",nowalbumname,newalbumhtml);
