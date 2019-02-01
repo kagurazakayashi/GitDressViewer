@@ -36,7 +36,12 @@ $(window).on('touchstart',function(e) {
 $(albumlist).on('touchmove',function(e) {
     const touch = e.originalEvent.targetTouches[0];
     const pagex = touch.pageX;
-    const msx = toucholdx - pagex;
+    var msx = toucholdx - pagex;
+    if (msx > 0) {
+        msx += 10;
+    } else if (msx < 0) {
+        msx -= 10;
+    }
     toucholdx = pagex;
     albumlist.scrollLeft(albumlist.scrollLeft() + msx);
     e.preventDefault();
