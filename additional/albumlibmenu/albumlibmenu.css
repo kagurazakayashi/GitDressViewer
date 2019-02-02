@@ -1,0 +1,112 @@
+@font-face {
+    font-family: 'SourceHanSansSC-Light';
+    src: url('SourceHanSansSC-Light.ttf') format('truetype'), url('SourceHanSansSC-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    font-family: 'SourceHanSansSC-Light';
+}
+#bodydiv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#menubox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.menuitem {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    z-index: 2;
+    text-shadow: 1px 1px 1px #000;
+}
+.menuitem:hover {
+    text-decoration: underline
+}
+@keyframes menuboxrotate {
+    from{ transform: rotate(0deg) }
+    to{ transform: rotate(-80deg) }
+}
+#menuitem1 {
+    background-color: #5bcefa;
+    left: 100%;
+}
+#menuitem2 {
+    background-color: #f5a9b8;
+    top: 50%;
+    left: -100%;
+}
+.menuitemtxt {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    z-index: 3;
+    line-height: 30px;
+}
+.menuitemspace {
+    display: inline-block;
+    width: 100px;
+    height: 1px;
+    background-color: #000;
+}
+.menuitemtxtsub {
+    font-size: 20px;
+}
+.menuitemtxtb {
+    text-align: left;
+}
+#menuitem1txt {
+    bottom: 15px;
+    margin-left: -80px;
+    color: #f5a9b8;
+}
+/* ↑ margin-left 互补 ↓ */
+#menuitem2txt {
+    top: 10px;
+    margin-left: 20px;
+    color: #5bcefa;
+}
+.ico {
+    display: inline;
+    position: absolute;
+    font-size: 100px;
+    color: black;
+    z-index: 4;
+}
+#icotl {
+    top: 0;
+    left: 0;
+    color: #5bcefa;
+}
+#icotr {
+    top: 0;
+    right: 0;
+    color: #5bcefa;
+    display: none;
+}
+#icobl {
+    bottom: 0;
+    left: 0;
+    color: #f5a9b8;
+    display: none;
+}
+#icobr {
+    bottom: 0;
+    right: 0;
+    color: #f5a9b8;
+}
