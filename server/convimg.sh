@@ -37,6 +37,7 @@ for pimg in `
     find . -iname "*.jpeg" 2>/dev/null | tr " " "\?" &&
     find . -iname "*.png" 2>/dev/null | tr " " "\?" &&
     find . -iname "*.webp" 2>/dev/null | tr " " "\?" &&
+    find . -iname "*.gif" 2>/dev/null | tr " " "\?" &&
     find . -iname "*.bmp" 2>/dev/null | tr " " "\?"`
 do
     allimgp=`expr $allimgp + 1`
@@ -72,6 +73,7 @@ do
         find . -iname "*.jpeg" 2>/dev/null | tr " " "\?" &&
         find . -iname "*.png" 2>/dev/null | tr " " "\?" &&
         find . -iname "*.webp" 2>/dev/null | tr " " "\?" &&
+        find . -iname "*.gif" 2>/dev/null | tr " " "\?" &&
         find . -iname "*.bmp" 2>/dev/null | tr " " "\?"`
         do
             nowimg=`tr "\?" " " <<<$nowimg`
